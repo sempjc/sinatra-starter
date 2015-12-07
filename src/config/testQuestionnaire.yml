@@ -1,0 +1,13 @@
+  - titulo_seccion: 'Comida:'
+    preguntas:
+    - label: "Sabor de acompa&ntilde;ante."
+      type: :radio
+      field: "acompanante_sabor"
+
+    - label: "La orden fue servida exactamente como se orden&oacute;."
+      type: :range
+      field: "orden_servida_exactamente_como_se_ordeno"
+
+    - label: 'Observaci&Oacute;n:'
+      type: :textarea
+      field: "observacion_comida"

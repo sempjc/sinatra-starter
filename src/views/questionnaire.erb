@@ -1,0 +1,76 @@
+
+<div class="container-fluid">
+    <section class="row col-sm-12 col-md-offset-3 col-md-6">
+
+      <% if @answer.errors.size > 0 %>
+      <div class='alert alert-danger'>
+          There was an error with you submission
+      </div>
+      <% end %>
+
+
+      <!-- Form -->
+      <form action="" method="post">
+        <div class="panel panel-primary">
+
+          <% @questionario.each do | question | %>
+            <!-- Titulo de la seccion -->
+            <div class="panel-heading text-center">
+              <h2> <%= question["titulo_seccion"] %></h2>
+            </div>
+
+            <!-- Pregunta -->
+            <ul class="list-group">
+              <% question[ "preguntas" ].each do | pregunta | %>
+
+                <li class="list-group-item">
+                  <p><%= pregunta["label"] %></p>
+
+                  <!-- Range input -->
+                  <% if pregunta["type"] == :range %>
+                    <div class="col-xs-12">
+                      <ul class="list-unstyled list-inline">
+                        <li class="col-xs-4 text-left">Pobre</li>
+                        <li class="col-xs-4 text-center">Bueno</li>
+                        <li class="col-xs-4 text-right">Excelente</li>
+                      </ul>
+                    </div>
+                    <input type="range" name=<%= pregunta["field"] %> value="" min="1" min="1" max="5">
+                  </li>
+
+                  <!-- Radio input -->
+                  <% elsif pregunta["type"] == :radio %>
+                  <label class="radio-inline input-lg">
+                    <input  type="radio" name=<%= pregunta["field"] %> value="1">Si
+                  </label>
+                  <label class="radio-inline input-lg">
+                    <input  type="radio" name=<%= pregunta["field"] %> value="0">No
+                  </label>
+
+                  <!-- Error message -->
+                  <% if @answer.errors[ pregunta["field"] ] != nil %>
+                    <p class='text-danger'>
+                        <%= @answer.errors[ pregunta["field"] ].first %>
+                    </p>
+                  <% end %>
+
+                  <% else %>
+                  <!-- Text area -->
+                  <!-- Observaciones seccion 2-->
+                  <li class="list-group-item">
+                    <textarea name=<%= pregunta["field"] %> class="form-control"><%= @answer.send( pregunta["field"] ) %></textarea>
+                  </li>
+                </ul>
+                <% end %>
+              <% end %>
+            </ul>
+          <% end %>
+
+          <!-- Boton para guardar y continuar -->
+          <div class="panel-footer text-center">
+            <button class="btn btn-default btn-lg" >Siguiente</button>
+          </div>
+        </div>
+      </form> <!-- End form -->
+    </section>
+</div>

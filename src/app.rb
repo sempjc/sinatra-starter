@@ -24,7 +24,7 @@ class MyApplication < Sinatra::Base
   #Configure Sinatra
   set :root,      File.dirname(__FILE__)
   set :sessions,  true
-
+  register Sinatra::Auth
   #Configure Development
   configure :development do
     require 'pry'

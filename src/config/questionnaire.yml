@@ -1,0 +1,114 @@
+- titulo_seccion: 'Al momento de realizar la orden:'
+  preguntas:
+  - label: El cajero lo recibi&oacute; con una sonrisa y fue amable?
+    type: :radio
+    field: a
+    name: ' '
+  - label: Mantuvo contacto visual, mientras tomaba su orden?
+    type: :radio
+    name: ' '
+  - label: Ofreci&oacute; el especial o plato principal del dia?
+    type: :radio
+    name: ' '
+  - label: Sugiri&oacute; agrandar orden?
+    type: :radio
+    name: ' '
+  - label: Sugiri&oacute; anadir postre en su orden?
+    type: :radio
+    name: ' '
+  - label: La orden fue servida por empleado distinto al cajero?
+    type: :radio
+    name: ' '
+  - label: 'Observaci&oacute;n:'
+    type: :textarea
+    name: ' '
+- titulo_seccion: 'Sobre el personal:'
+  preguntas:
+  - label: Gerente estaba presente?
+    type: :radio
+    name: ' '
+  - label: Empleado presente en &aacute;rea de caja?
+    type: :radio
+    name: ' '
+  - label: Estaban los empleados concentrados en sus respectivas tareas?
+    type: :radio
+    name: ' '
+  - label: Empleados con buena apariencia?
+    type: :radio
+    name: ' '
+  - label: Empleado mostr&oacute; conocimiento del men&uacute;?
+    type: :radio
+    name: ' '
+  - label: 'Observacin&oacute;:'
+    type: :textarea
+    name: ' '
+- titulo_seccion: 'Apariencia del establecimiento:'
+  preguntas:
+  - label: '&Aacute;reas externas con apariencia atractiva'
+    type: :range
+    name: ' '
+  - label: "&Aacute;rea externas limpias. Ej: cristales, aceras, puertas, ect."
+    type: :range
+    name: ' '
+  - label: Interior del restaurante con apariencia atractiva.
+    type: :range
+    name: ' '
+  - label: "Interior del restaurante limpio. Ej: Mesas, pisos, cristales, etc."
+    type: :range
+    name: ' '
+  - label: "&Aacute;rearea de bano limpio, organizado y con buena apariencia."
+    type: :range
+    name: ' '
+  - label: "&Aacute;rearea de safacones, limpia y organizada."
+    type: :range
+    name: ' '
+  - label: "&Aacute;rea de caja limpia y ordenada."
+    type: :range
+    name: ' '
+  - label: "&Aacute;rea de entrega limpia y ordenada."
+    type: :range
+    name: ' '
+  - label: "Observaci&oacute;n:"
+    type: :textarea
+    name: ' '
+- titulo_seccion: 'Comida:'
+  preguntas:
+  - label: "Impresi&oacute;n general del men&uacute;."
+    type: :range
+    name: ' '
+  - label: "La orden fue servida exactamente como se orden&oacute;."
+    type: :range
+    name: ' '
+  - label: Plato principal con buena apariencia.
+    type: :range
+    name: ' '
+  - label: Plato principal con buen sabor.
+    type: :range
+    name: ' '
+  - label: Plato principal con temperatura correcta.
+    type: :range
+    name: ' '
+  - label: Acompaante con buen apariencia.
+    type: :range
+    name: ' '
+  - label: Acompaante con buen sabor.
+    type: :range
+    name: ' '
+  - label: Acompaante con temperatura correcta.
+    type: :range
+    name: ' '
+  - label: Postre con buena apariencia.
+    type: :range
+    name: ' '
+  - label: Postre con buen sabor
+    type: :range
+    name: ' '
+  - label: Postre con temperatura correcta.
+    type: :range
+    name: ' '
+  - label: Bebidas con buen sabor y temperatura correcta.
+    type: :range
+    name: ' '
+  - label: 'Observaci&Oacute;n:'
+    type: :textarea
+    name: ' '

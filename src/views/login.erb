@@ -1,0 +1,33 @@
+
+<form action="/login/new" method="post">
+
+  <p>Register</p>
+  Username:<input type="text"     name="username">
+  Email:   <input type="email"    name="email">
+  Password:<input type="password" name="password">
+
+  <button type="submit">Register</button>
+
+  <!-- Error Message -->
+  <% if @user.errors.size > 0 %>
+    <%  @user.errors.messages.each do | error | %>
+      <div class='alert alert-danger'>
+          <%= error[1].first %>
+      </div>
+    <% end %>
+  <% end %>
+</form>
+
+<form action="/login" method="post">
+
+  <p>Welcome back!</p>
+  Username:<input type="text" name="username">
+  Password:<input type="password" name="password">
+  
+  <button type="submit">Login</button>
+
+  <!-- Error message -->
+  <% if @error_message %>
+    <%= @error_message %>
+  <% end %>
+</form>
