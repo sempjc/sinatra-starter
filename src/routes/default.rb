@@ -1,11 +1,15 @@
 require "yaml"
 class MyApplication < Sinatra::Base
 
+  get "/" do
+    redirect "/login"
+  end
+
   #Routes
   # Login
   get "/login" do
     @user = User.new
-    erb :login
+    erb :login , layout: :layout_login
   end
 
   post "/login" do
@@ -15,7 +19,7 @@ class MyApplication < Sinatra::Base
     else
       @error_message = "Invalid Username/Password combination"
     end
-    erb :login
+    erb :login, layout: :layout_login
   end
 
   get "/logout" do
@@ -41,6 +45,7 @@ class MyApplication < Sinatra::Base
   end
 
   post "/questionnaire/new" do
+    binding.pry
     @questionario = YAML.load(File.read( questions_config_url ) )
     # Create new user instance, set its values and save
     data = params[:answer]

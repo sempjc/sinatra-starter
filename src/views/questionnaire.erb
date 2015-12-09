@@ -1,77 +1,88 @@
-
-<div class="container-fluid">
-    <section class="row col-sm-12 col-md-offset-3 col-md-6">
-
-      <% if @answer.errors.size > 0 %>
-      <div class='alert alert-danger'>
-          There was an error with you submission
+<div class="row">
+  <div class="col-md-12 panel-primary">
+    <div class="content-box-header panel-heading">
+      <div class="panel-title ">
+        <i class='fa fa-list'></i>
+        Fill in Report
       </div>
-      <% end %>
+    </div>
+    <div class="content-box-large box-with-header">
+    <!-- PAGE CONTENT -->
 
+        <!-- Form -->
+        <form action="" method="post">
 
-      <!-- Form -->
-      <form action="" method="post">
-        <div class="panel panel-primary">
+            <% @questionario.each do | question | %>
+              <!-- Titulo de la seccion -->
+              <div class="text-center">
+                <h2> <%= question["titulo_seccion"] %></h2>
+              </div>
 
+              <!-- Pregunta -->
+              <ul class="list-group">
+                <% question[ "preguntas" ].each do | pregunta | %>
 
-          <% @questionario.each do | question | %>
-            <!-- Titulo de la seccion -->
-            <div class="panel-heading text-center">
-              <h2> <%= question["titulo_seccion"] %></h2>
+                  <li class="list-group-item">
+
+                    <h4><%= pregunta["label"] %></h4>
+
+                    <% if pregunta["type"] == :range %>
+
+                      <!-- Range input -->
+                      <div class="col-xs-12">
+                        <ul class="list-unstyled list-inline">
+                          <li class="col-xs-4 text-left">Pobre</li>
+                          <li class="col-xs-4 text-center">Bueno</li>
+                          <li class="col-xs-4 text-right">Excelente</li>
+                        </ul>
+                      </div>
+                      <input type="range" name="answer[<%= pregunta["field"] %>]"  min="1" min="1" max="5" value="<%= @answer.send( pregunta["field"] ) %>">
+                      <!-- Range input -->
+
+                    <% elsif pregunta["type"] == :radio %>
+
+                      <!-- Radio -->
+                      <label class="radio-inline input-lg">
+                        <input  type="radio" name="answer[<%= pregunta["field"] %>]" value="1" <%= @answer.send( pregunta["field"] ) == true ? "checked" : "" %>>Si
+                      </label>
+                      <label class="radio-inline input-lg">
+                        <input  type="radio" name="answer[<%= pregunta["field"] %>]" value="0" <%= @answer.send( pregunta["field"] ) == false ? "checked" : "" %>>No
+                      </label>
+                      <!-- Radio -->
+
+                    <% else %>
+
+                      <!-- Text area -->
+                      <textarea name="answer[<%= pregunta["field"] %>]" class="form-control"><%= @answer.send( pregunta["field"] ) %></textarea>
+                      <!-- Text area -->
+
+                    <% end %>
+
+                    <!-- Error message -->
+                    <% if @answer.errors[ pregunta["field"] ] != nil %>
+                      <p class='text-danger'>
+                          <%= @answer.errors[ pregunta["field"] ].first %>
+                      </p>
+                    <% end %>
+                  </li>
+
+                <% end %>
+              </ul>
+
+            <% end %>
+
+            <!-- Boton para guardar y continuar -->
+            <div class="text-right">
+              <button class="btn btn-primary btn-lg" >
+                <i class='fa fa-save'></i>
+                Submit
+              </button>
             </div>
 
-            <!-- Pregunta -->
-            <ul class="list-group">
-              <% question[ "preguntas" ].each do | pregunta | %>
+        </form> <!-- End form -->
 
-                <li class="list-group-item">
-                  <p><%= pregunta["label"] %></p>
 
-                  <!-- Range input -->
-                  <% if pregunta["type"] == :range %>
-                    <div class="col-xs-12">
-                      <ul class="list-unstyled list-inline">
-                        <li class="col-xs-4 text-left">Pobre</li>
-                        <li class="col-xs-4 text-center">Bueno</li>
-                        <li class="col-xs-4 text-right">Excelente</li>
-                      </ul>
-                    </div>
-                    <input type="range" name="answer[<%= pregunta["field"] %>]"  min="1" min="1" max="5" value="<%= @answer.send( pregunta["field"] ) %>">
-                  </li>
-
-                  <!-- Radio input -->
-                  <% elsif pregunta["type"] == :radio %>
-                  <label class="radio-inline input-lg">
-                    <input  type="radio" name="answer[<%= pregunta["field"] %>]" value="1" <%= @answer.send( pregunta["field"] ) == true ? "checked" : "" %>>Si
-                  </label>
-                  <label class="radio-inline input-lg">
-                    <input  type="radio" name="answer[<%= pregunta["field"] %>]" value="0" <%= @answer.send( pregunta["field"] ) == false ? "checked" : "" %>>No
-                  </label>
-
-                  <!-- Error message -->
-                  <% if @answer.errors[ pregunta["field"] ] != nil %>
-                    <p class='text-danger'>
-                        <%= @answer.errors[ pregunta["field"] ].first %>
-                    </p>
-                  <% end %>
-
-                  <% else %>
-                  <!-- Text area -->
-                  <!-- Observaciones seccion 2-->
-                  <li class="list-group-item">
-                    <textarea name="answer[<%= pregunta["field"] %>]" class="form-control"><%= @answer.send( pregunta["field"] ) %></textarea>
-                  </li>
-                </ul>
-                <% end %>
-              <% end %>
-            </ul>
-          <% end %>
-
-          <!-- Boton para guardar y continuar -->
-          <div class="panel-footer text-center">
-            <button class="btn btn-default btn-lg" >Submit</button>
-          </div>
-        </div>
-      </form> <!-- End form -->
-    </section>
+    <!-- PAGE CONTENT -->
+    </div>
+  </div>
 </div>

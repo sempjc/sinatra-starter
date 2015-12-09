@@ -1,0 +1,38 @@
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  position: static;
+  margin-bottom: 60px;
+}
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+}
+
+/* Required
+-------------------------------------------------- */
+.fa-req{
+  color: red;
+  vertical-align: super;
+  font-size: 8px;
+}
+
+/* Colors
+-------------------------------------------------- */
+.white-text {
+  color: white;
+}
+
+.white-bkg {
+  background: white;
+}
+
+.river-blue-bkg {
+  background: #3498db;
+}

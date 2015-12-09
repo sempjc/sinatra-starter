@@ -1,47 +1,69 @@
-<div class='text-right'>
-  <a href="/questionnaire/new" class='btn btn-primary'>
-    <i class='glyphicon glyphicon-plus'></i>
-    Add New
-  </a>
-</div>
+<div class="row">
+  <div class="col-md-12 panel-primary">
+    <div class="content-box-header panel-heading">
+      <div class="panel-title ">
+        <i class='fa fa-list'></i>
+        Your Reports
+      </div>
+    </div>
+    <div class="content-box-large box-with-header">
+    <!-- PAGE CONTENT -->
 
 
-<div class='table-responsive'>
-  <table class='table'>
-    <thead>
-      <tr>
-        <th>Date</th> <th>Location</th>  <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
+    <div class='text-right'>
+      <a href="/questionnaire/new" class='btn btn-primary'>
+        <i class='glyphicon glyphicon-plus'></i>
+        Add New
+      </a>
+    </div>
 
-      <% @questionnaires.each do |questionnaire| %>
-       <tr>
-         <td>
-           <%= questionnaire[ :user_id ] %>
-         </td>
-         <td>
-           <%= questionnaire[ :observacion_comida ] %>
-         </td>
-         <td>
 
-           <a href='/questionnaire/<%= questionnaire.id %>/edit'>
-             <i class='glyphicon glyphicon-edit'></i>
-             Edit
-           </a>
+    <div class='table-responsive'>
+      <table class='table'>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>Location</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
 
-           <a href='/questionnaire/<%= questionnaire.id %>/delete'>
-             <i class='glyphicon glyphicon-edit'></i>
-             Delete
-           </a>
+          <% @questionnaires.each do |questionnaire| %>
+           <tr>
+             <td>
+               <%= questionnaire[ :user_id ] %>
+             </td>
+             <td>
+               <%= questionnaire[ :observacion_comida ] %>
+             </td>
+             <td>
 
-         </td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+               <a href='/questionnaire/<%= questionnaire.id %>/edit'>
+                 <i class='glyphicon glyphicon-edit'></i>
+                 Edit
+               </a>
 
-<div >
-    <%= will_paginate @questionnaires,  renderer: BootstrapPagination::Sinatra %>
+               &nbsp;&nbsp;
+
+               <a href='/questionnaire/<%= questionnaire.id %>/delete'>
+                 <i class='glyphicon glyphicon-trash'></i>
+                 Delete
+               </a>
+
+             </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <div >
+        <%= will_paginate @questionnaires,  renderer: BootstrapPagination::Sinatra %>
+    </div>
+
+
+    <!-- PAGE CONTENT -->
+    </div>
+  </div>
 </div>
