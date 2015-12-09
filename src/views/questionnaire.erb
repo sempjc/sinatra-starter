@@ -13,6 +13,7 @@
       <form action="" method="post">
         <div class="panel panel-primary">
 
+
           <% @questionario.each do | question | %>
             <!-- Titulo de la seccion -->
             <div class="panel-heading text-center">
@@ -35,16 +36,16 @@
                         <li class="col-xs-4 text-right">Excelente</li>
                       </ul>
                     </div>
-                    <input type="range" name=<%= pregunta["field"] %> value="" min="1" min="1" max="5">
+                    <input type="range" name="answer[<%= pregunta["field"] %>]"  min="1" min="1" max="5" value="<%= @answer.send( pregunta["field"] ) %>">
                   </li>
 
                   <!-- Radio input -->
                   <% elsif pregunta["type"] == :radio %>
                   <label class="radio-inline input-lg">
-                    <input  type="radio" name=<%= pregunta["field"] %> value="1">Si
+                    <input  type="radio" name="answer[<%= pregunta["field"] %>]" value="1" <%= @answer.send( pregunta["field"] ) == true ? "checked" : "" %>>Si
                   </label>
                   <label class="radio-inline input-lg">
-                    <input  type="radio" name=<%= pregunta["field"] %> value="0">No
+                    <input  type="radio" name="answer[<%= pregunta["field"] %>]" value="0" <%= @answer.send( pregunta["field"] ) == false ? "checked" : "" %>>No
                   </label>
 
                   <!-- Error message -->
@@ -58,7 +59,7 @@
                   <!-- Text area -->
                   <!-- Observaciones seccion 2-->
                   <li class="list-group-item">
-                    <textarea name=<%= pregunta["field"] %> class="form-control"><%= @answer.send( pregunta["field"] ) %></textarea>
+                    <textarea name="answer[<%= pregunta["field"] %>]" class="form-control"><%= @answer.send( pregunta["field"] ) %></textarea>
                   </li>
                 </ul>
                 <% end %>
@@ -68,7 +69,7 @@
 
           <!-- Boton para guardar y continuar -->
           <div class="panel-footer text-center">
-            <button class="btn btn-default btn-lg" >Siguiente</button>
+            <button class="btn btn-default btn-lg" >Submit</button>
           </div>
         </div>
       </form> <!-- End form -->

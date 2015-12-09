@@ -16,6 +16,21 @@
       <link rel="stylesheet" href="/css/color.css">
   </head>
   <body>
+
+    <% if authenticated? %>
+      <strong><%= authenticated_user.username %></strong>
+      <a href='/logout'>
+         logout
+      </a>
+    <% end %>
+
+    <% flash.each do | key , value | %>
+      <div class='alert alert-<%= key %>'>
+        <%= value %>
+      </div>
+    <% end %>
+
+
     <!-- MAIN CONTENT -->
     <%= yield %>
     <!-- MAIN CONTENT -->

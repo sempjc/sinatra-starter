@@ -8,6 +8,7 @@ require "sinatra/base"
 require "sinatra/activerecord"
 require "sinatra/flash"
 require "will_paginate"
+require "will_paginate-bootstrap"
 require 'will_paginate/active_record'
 
 #Require Helpers
@@ -24,7 +25,13 @@ class MyApplication < Sinatra::Base
   #Configure Sinatra
   set :root,      File.dirname(__FILE__)
   set :sessions,  true
+  set :session_secret,  "MYSECRET"
+
   register Sinatra::Auth
+  register Sinatra::Flash
+  register BootstrapPagination
+  register WillPaginate::Sinatra
+
   #Configure Development
   configure :development do
     require 'pry'
