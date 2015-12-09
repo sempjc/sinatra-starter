@@ -12,7 +12,7 @@ class Foodanswer < ActiveRecord::Base
   validates :orden_servida_exactamente,                     presence: true
   validates :plato_principal_sabor,                         presence: true
   validates :observacion_general,                           presence: true
-  validates :orden_servida_exactamente_como_se_ordeno,      presence: true
+  validates :orden_servida_exactamente,                     presence: true
 
 
 end

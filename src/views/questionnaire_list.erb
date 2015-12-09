@@ -23,7 +23,7 @@
         <thead>
           <tr>
             <th>Date</th>
-            <th>Location</th>
+            <th>Restaurant</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -32,10 +32,10 @@
           <% @questionnaires.each do |questionnaire| %>
            <tr>
              <td>
-               <%= questionnaire[ :user_id ] %>
+               <%= questionnaire[ :fecha ] %>
              </td>
              <td>
-               <%= questionnaire[ :observacion_comida ] %>
+               <%= questionnaire[ :nombre_restaurante ] %>
              </td>
              <td>
 

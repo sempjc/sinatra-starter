@@ -1,5 +1,21 @@
   - titulo_seccion: 'Mystery Shooper:'
     preguntas:
+    - label: "Fecha de visita:"
+      type: :date
+      field: "fecha"
+
+    - label: "Nombre del Restaurante:"
+      type: :text
+      field: "nombre_restaurante"
+
+    - label: "Nombre del Gerente:"
+      type: :text
+      field: "nombre_gerente"
+
+    - label: "Nombre del empleado que lo antendió:"
+      type: :text
+      field: "nombre_empleado"
+
     - label: "El cajero lo atendió con una sonrisa y fue amable"
       type: :radio
       field: "cajero_recibio_sonrisa_amable"
