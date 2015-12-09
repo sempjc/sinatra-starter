@@ -1,0 +1,46 @@
+  - titulo_seccion: 'Mystery Shooper:'
+    preguntas:
+    - label: "El cajero lo atendió con una sonrisa y fue amable"
+      type: :radio
+      field: "cajero_recibio_sonrisa_amable"
+
+    - label: "¿La orden fue servida por empleado distinto al cajero?"
+      type: :radio
+      field: "servido_empleado_distinto"
+
+    - label: "¿Empleado mostró conocimiento del menú?"
+      type: :radio
+      field: "conocimiento_menu"
+
+    - label: "¿Ofreció especial o plato principal del día?"
+      type: :radio
+      field: "ofrecio_especial"
+
+
+    - label: "Área externa con apariencia atractiva"
+      type: :range
+      field: "area_externa_limpia"
+
+    - label: "Interior del restaurante con apariencia atractiva."
+      type: :range
+      field: "interior_limpio"
+
+
+
+    - label: "Impresión general del menú."
+      type: :range
+      field: "impresion_menu"
+
+    - label: "Orden servida exactamente como se ordenó"
+      type: :range
+      field: "orden_servida_exactamente"
+
+    - label: "Plato principal con buen sabor"
+      type: :range
+      field: "plato_principal_sabor"
+
+
+
+    - label: 'Observaci&oacute;n:'
+      type: :textarea
+      field: "observacion_general"

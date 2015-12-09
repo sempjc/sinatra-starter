@@ -33,24 +33,23 @@ class MyApplication < Sinatra::Base
   # Main menu
   get "/questionnaire/" do
     @user = authenticated_user()
-    @questionnaires= Testanswer.where(user: @user).paginate( :page => params[ :page ], :per_page => 10 ).order( user_id:  :desc )
+    @questionnaires= Foodanswer.where(user: @user).paginate( :page => params[ :page ], :per_page => 10 ).order( user_id:  :desc )
     erb :questionnaire_list
   end
 
   # New
   get "/questionnaire/new" do
     @questionario = YAML.load(File.read( questions_config_url ) )
-    @answer       = Testanswer.new
+    @answer       = Foodanswer.new
     erb :questionnaire
   end
 
   post "/questionnaire/new" do
-    binding.pry
     @questionario = YAML.load(File.read( questions_config_url ) )
     # Create new user instance, set its values and save
     data = params[:answer]
     data[:user] = authenticated_user()
-    @answer       = Testanswer.create( data )
+    @answer       = Foodanswer.create( data )
     # Check for validation
     if @answer.errors.size > 0
         flash[:danger] = "There was an error with your data"
@@ -65,14 +64,14 @@ class MyApplication < Sinatra::Base
   get "/questionnaire/:id/edit" do
     @questionario = YAML.load(File.read( questions_config_url ) )
     # find va a buscar el id que representa un questionario
-    @answer       = Testanswer.find( params[ :id ] )
+    @answer       = Foodanswer.find( params[ :id ] )
     erb :questionnaire
   end
 
   post "/questionnaire/:id/edit" do
     @questionario = YAML.load(File.read( questions_config_url ) )
     # Create new user instance, set its values and save
-    @answer       = Testanswer.find( params[:id])
+    @answer       = Foodanswer.find( params[:id])
     @answer.update( params[:answer] )
     # Check for validation
     if @answer.errors.size > 0
@@ -86,7 +85,7 @@ class MyApplication < Sinatra::Base
 
   get "/questionnaire/:id/delete" do
 
-    @answer       = Testanswer.find( params[:id ])
+    @answer       = Foodanswer.find( params[:id ])
     success = @answer.destroy
 
     # Check for validation
@@ -102,6 +101,6 @@ class MyApplication < Sinatra::Base
   private
 
   def questions_config_url
-    File.join( File.dirname(__FILE__), "..", "config",  "testQuestionnaire.yml" )
+    File.join( File.dirname(__FILE__), "..", "config",  "oficalQuestionnaire.yml" )
   end
 end
